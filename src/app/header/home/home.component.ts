@@ -33,16 +33,30 @@ export class HomeComponent implements OnInit {
       mensaje: ['',
         [
           Validators.required,
-          Validators.minLength(5)
+          Validators.maxLength(500)
         ]
       ]
 
     })
 
   }
+  
+  aceptado = false ;
+  rechazado = false;
+
 
   send(): any {
-    console.log(this.formLogin.value)
+     if(this.formLogin.valid == true){
+      this.aceptado = true;
+      this.rechazado = false;
+     }else{
+      this.rechazado = true;
+      this.aceptado = false;
+
+     }
   }
 
 }
+
+
+// console.log(this.formLogin.value)
